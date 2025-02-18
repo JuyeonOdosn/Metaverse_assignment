@@ -16,12 +16,12 @@ public class BaseController : MonoBehaviour
     private Vector2 knockback = Vector2.zero;
     private float knockbackDuration = 0.0f;
 
-    protected AnimationHandler animationHandler;
+    protected Animation animationHandler;
 
     protected virtual void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
-        animationHandler = GetComponent<AnimationHandler>();
+        animationHandler = GetComponent<Animation>();
     }
 
     protected virtual void Start()
