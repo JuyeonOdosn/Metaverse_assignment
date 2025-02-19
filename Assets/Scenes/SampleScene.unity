@@ -1141,6 +1141,7 @@ GameObject:
   - component: {fileID: 362710415}
   - component: {fileID: 362710416}
   - component: {fileID: 362710417}
+  - component: {fileID: 362710418}
   m_Layer: 0
   m_Name: NPC_Lizard
   m_TagString: Untagged
@@ -1222,7 +1223,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c14f1a868c3de8a4dbeab44f50b5b6e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueUI: {fileID: 210271724}
+  dialogueUI: {fileID: 362710418}
+--- !u!114 &362710418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 362710414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a05256c39f817c4a9effa7bea9ef45e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialoguePanel: {fileID: 210271724}
+  dialogueText: {fileID: 1622078720}
+  nextButton: {fileID: 1677792162}
+  dialogues:
+  - Liza,,Liza,,,(Help me from old elf,,)
+  - Li~~za,,(I'm slavor of her )
+  - Li~~za!!(Make me freeeeee!!)
 --- !u!1 &371755356
 GameObject:
   m_ObjectHideFlags: 0
@@ -1234,6 +1254,7 @@ GameObject:
   - component: {fileID: 371755357}
   - component: {fileID: 371755358}
   - component: {fileID: 371755359}
+  - component: {fileID: 371755360}
   m_Layer: 0
   m_Name: NPC_Ogre
   m_TagString: Untagged
@@ -1315,7 +1336,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c14f1a868c3de8a4dbeab44f50b5b6e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueUI: {fileID: 802604287}
+  dialogueUI: {fileID: 371755360}
+--- !u!114 &371755360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 371755356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a05256c39f817c4a9effa7bea9ef45e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialoguePanel: {fileID: 802604287}
+  dialogueText: {fileID: 1694594599}
+  nextButton: {fileID: 539009430}
+  dialogues:
+  - Ogre, Ogre, Ogre(who are you?)
+  - Ogre~~(do you want to enter this building?)
+  - Ogre? (oh, pissed off!)
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1504,7 +1544,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 539009431}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 371755360}
+        m_TargetAssemblyTypeName: DialogueUI, Assembly-CSharp
+        m_MethodName: OnNextButtonClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &539009431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1784,6 +1836,7 @@ MonoBehaviour:
   nextButton: {fileID: 1774852212}
   dialogues:
   - Hello! Nice to meet you.
+  - This is my home!  If you want, I can invite you!
 --- !u!114 &776494184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3882,6 +3935,7 @@ GameObject:
   - component: {fileID: 868664340}
   - component: {fileID: 868664341}
   - component: {fileID: 868664342}
+  - component: {fileID: 868664343}
   m_Layer: 0
   m_Name: NPC_Dwarf
   m_TagString: Untagged
@@ -3963,7 +4017,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c14f1a868c3de8a4dbeab44f50b5b6e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueUI: {fileID: 974147667}
+  dialogueUI: {fileID: 868664343}
+--- !u!114 &868664343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 868664339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a05256c39f817c4a9effa7bea9ef45e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialoguePanel: {fileID: 974147667}
+  dialogueText: {fileID: 30714828}
+  nextButton: {fileID: 2132293380}
+  dialogues:
+  - Hey! How are you?
+  - Do you want to adventure?
+  - Come on!
 --- !u!1 &974147667
 GameObject:
   m_ObjectHideFlags: 0
@@ -4955,7 +5028,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1677792163}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 362710418}
+        m_TargetAssemblyTypeName: DialogueUI, Assembly-CSharp
+        m_MethodName: OnNextButtonClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1677792163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28594,7 +28679,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2132293381}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 868664343}
+        m_TargetAssemblyTypeName: DialogueUI, Assembly-CSharp
+        m_MethodName: OnNextButtonClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2132293381
 MonoBehaviour:
   m_ObjectHideFlags: 0

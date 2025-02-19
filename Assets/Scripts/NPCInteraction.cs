@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class NPCInteraction : MonoBehaviour
 {
-    // DialogueUI 스크립트가 붙은 오브젝트를 Inspector에서 연결합니다.
     public DialogueUI dialogueUI;
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -23,5 +22,10 @@ public class NPCInteraction : MonoBehaviour
             Debug.Log("플레이어 인식");
             dialogueUI.HideDialogue();
         }
+    }
+
+    private void Update()
+    {
+        
     }
 }
