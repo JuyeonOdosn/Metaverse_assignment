@@ -16,7 +16,6 @@ public class DialogueUI : MonoBehaviour
     void Start()
     {
         dialoguePanel.SetActive(false);
-        Debug.Log("메서드 스타트");
     }
 
     public void ShowDialogue()

@@ -14,8 +14,12 @@ public class Player : MonoBehaviour
 
     public bool godMode = false;
 
+    GameManager gameManager;
+
     void Start()
     {
+        gameManager = GameManager.Instance;
+
         animator = transform.GetComponentInChildren<Animator>();
         _rigidbody = transform.GetComponent<Rigidbody2D>();
 
@@ -36,9 +40,11 @@ public class Player : MonoBehaviour
         {
             if (deathCooldown <= 0)
             {
+                gameManager.GameOver();
+
                 if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
                 {
-                    // 게임 재시작
+                    gameManager.BackToHome();
                 }
             }
             else
@@ -71,7 +77,7 @@ public class Player : MonoBehaviour
 
         _rigidbody.velocity = velocity;
 
-        float angle = Mathf.Clamp((_rigidbody.velocity.y * 10f), -90, 90);
+        float angle = Mathf.Clamp((_rigidbody.velocity.y * 10f), -45, 45);
         float lerpAngle = Mathf.Lerp(transform.rotation.eulerAngles.z, angle, Time.fixedDeltaTime * 5f);
         transform.rotation = Quaternion.Euler(0, 0, lerpAngle);
     }
