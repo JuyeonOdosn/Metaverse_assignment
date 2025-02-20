@@ -36,6 +36,10 @@ public class GameManager : MonoBehaviour
     UIManager uiManager;
     public UIManager UIManager { get { return uiManager; } set { uiManager = value; } }
 
+
+    private bool isResultActive = false;
+
+
     private void Awake()
     {
         if(gameManager == null)
@@ -48,8 +52,16 @@ public class GameManager : MonoBehaviour
             if(gameManager != this)
              Destroy(this);
         }
+                
+    }
 
-        
+
+    private void Update()
+    {
+        if (isResultActive && (Input.GetMouseButtonDown(0) || Input.anyKeyDown))
+        {
+            CloseResult();
+        }
     }
 
     public void BackToHome()
@@ -58,7 +70,6 @@ public class GameManager : MonoBehaviour
 
         Invoke("ShowResult", 0.5f);
 
-       
     }
 
     private void ResultShow()
@@ -71,6 +82,7 @@ public class GameManager : MonoBehaviour
     {
         uiManager.ChangeState(UIState.GameOver);
         uiManager.SetGameOverText(currentScore);
+        ResultShow();
     }
 
     public void AddScore(int score)
@@ -91,6 +103,8 @@ public class GameManager : MonoBehaviour
 
     public void ShowResult()
     {
+        isResultActive = true;
+
         if (currentScore >= 50)
         {
             successResult.gameObject.SetActive(true);
@@ -102,7 +116,16 @@ public class GameManager : MonoBehaviour
             failResult.gameObject.SetActive(true);
             failScore.text = currentScore.ToString();
             failScore.gameObject.SetActive(true);
-        }
+        }       
+    }
+
+    void CloseResult()
+    {
+        successResult.SetActive(false);
+        failResult.SetActive(false);
+        isResultActive = false;
+
+        currentScore = 0;
     }
 
 }    

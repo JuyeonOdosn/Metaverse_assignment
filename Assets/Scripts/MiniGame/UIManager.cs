@@ -81,17 +81,6 @@ public class UIManager : MonoBehaviour
 
     public void Start()
     {
-        if (gameoverText == null)
-        {
-            Debug.LogError("restart text is null");
-        }
-
-        if (scoreText == null)
-        {
-            Debug.LogError("scoreText is null");
-            return;
-        }
-
         gameoverText.gameObject.SetActive(false);
         introText.gameObject.SetActive(true);
 
