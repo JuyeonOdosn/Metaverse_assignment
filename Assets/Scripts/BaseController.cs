@@ -24,7 +24,6 @@ public class BaseController : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         animationHandler = GetComponent<Animation>();
-        Debug.Log("base controller awake 스타트");
     }
 
     protected virtual void Start()
@@ -34,7 +33,6 @@ public class BaseController : MonoBehaviour
 
     protected virtual void Update()
     {
-        Debug.Log("Base Controller UPdate 스타트");
         HandleAction();
         Rotate(lookDirection);
     }

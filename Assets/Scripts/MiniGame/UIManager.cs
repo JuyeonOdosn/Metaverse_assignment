@@ -24,8 +24,6 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI introText;
     public Button startButton;
 
-   
-
     static UIManager instance;
     public static UIManager Instance
     {

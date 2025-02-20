@@ -1,9 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -24,8 +26,11 @@ public class GameManager : MonoBehaviour
 
     private const string BestScoreKey = "BestScore";
 
+    public GameObject successResult;
+    public GameObject failResult;
+    public TextMeshProUGUI successScore;
+    public TextMeshProUGUI failScore;
 
-    
 
 
     UIManager uiManager;
@@ -39,15 +44,26 @@ public class GameManager : MonoBehaviour
 
     public void BackToHome()
     {
-        Debug.Log("Game Over");
         SceneManager.LoadScene(0);
+
+        if(currentScore >= 50)
+        {
+            successResult.gameObject.SetActive(true);
+            successScore.text = currentScore.ToString();
+            successScore.gameObject.SetActive(true);
+        }
+        else
+        {
+            failResult.gameObject.SetActive(true);
+            failScore.text = currentScore.ToString();
+            failScore.gameObject.SetActive(true);
+        }
     }
 
     private void Start()
     {
-        uiManager.UpdateScore(0);
-
         bestScore = PlayerPrefs.GetInt(BestScoreKey, 0);
+        uiManager.UpdateScore(0);
     }
 
     public void GameOver()
