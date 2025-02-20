@@ -15,7 +15,7 @@ public class PlayerController : BaseController
         camera = Camera.main;
     }
 
-    protected override void HandleAction()
+    protected override void HandleAction() // 플레이어 이동 
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
@@ -41,7 +41,7 @@ public class PlayerController : BaseController
     }
 
     
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision) // Game 태그는 드워프한테만 있다. 드워프를 만났을 때, 미니게임 신으로 전환 하게 만드는 부분
     {
         if (collision.CompareTag("Game"))
         {

@@ -2,7 +2,7 @@ using UnityEngine;
 
 
 
-public class BaseController : MonoBehaviour
+public class BaseController : MonoBehaviour // Sample Scene에서 사용자의 움직임에 관한 클래스
 {
     protected Rigidbody2D _rigidbody;
 
@@ -15,8 +15,7 @@ public class BaseController : MonoBehaviour
     protected Vector2 lookDirection = Vector2.zero;
     public Vector2 LookDirection { get { return lookDirection; } }
 
-    private Vector2 knockback = Vector2.zero;
-    private float knockbackDuration = 0.0f;
+
 
     protected Animation animationHandler;
 
@@ -40,10 +39,6 @@ public class BaseController : MonoBehaviour
     protected virtual void FixedUpdate()
     {
         Movment(movementDirection);
-        if (knockbackDuration > 0.0f)
-        {
-            knockbackDuration -= Time.fixedDeltaTime;
-        }
     }
 
     protected virtual void HandleAction()
@@ -54,11 +49,6 @@ public class BaseController : MonoBehaviour
     private void Movment(Vector2 direction)
     {
         direction = direction * 5;
-        if (knockbackDuration > 0.0f)
-        {
-            direction *= 0.2f;
-            direction += knockback;
-        }
 
         _rigidbody.velocity = direction;
         animationHandler.Move(direction);
@@ -75,12 +65,6 @@ public class BaseController : MonoBehaviour
         {
             weaponPivot.rotation = Quaternion.Euler(0, 0, rotZ);
         }
-    }
-
-    public void ApplyKnockback(Transform other, float power, float duration)
-    {
-        knockbackDuration = duration;
-        knockback = -(other.position - transform.position).normalized * power;
     }
 }
 

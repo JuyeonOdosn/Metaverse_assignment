@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Animation : MonoBehaviour
+public class Animation : MonoBehaviour // 애니메이션
 {
     private static readonly int IsMoving = Animator.StringToHash("IsMove");
     

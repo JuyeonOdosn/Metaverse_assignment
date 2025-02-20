@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.Timeline;
 using UnityEngine;
 
-public class StartUI : BaseUI
+public class StartUI : BaseUI //StartUI Å¬·¡½º
 {
     protected override UIState GetUIStates()
     {

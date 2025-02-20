@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.Timeline;
 using UnityEngine;
 
-public abstract class BaseUI : MonoBehaviour
+public abstract class BaseUI : MonoBehaviour //GameUI, StartUI, GameOverUI를 위한 추상클래스입니다.
 {
     protected UIManager uiManager;
 
