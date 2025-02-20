@@ -34,33 +34,34 @@ public class GameManager : MonoBehaviour
 
 
     UIManager uiManager;
-    public UIManager UIManager { get { return uiManager; } }
+    public UIManager UIManager { get { return uiManager; } set { uiManager = value; } }
 
     private void Awake()
     {
-        gameManager = this;
-        uiManager = FindObjectOfType<UIManager>();
+        if(gameManager == null)
+        {
+            gameManager = this;
+            DontDestroyOnLoad(this);
+        }
+        else
+        {
+            if(gameManager != this)
+             Destroy(this);
+        }
+
+        
     }
 
     public void BackToHome()
     {
         SceneManager.LoadScene(0);
 
-        if(currentScore >= 50)
-        {
-            successResult.gameObject.SetActive(true);
-            successScore.text = currentScore.ToString();
-            successScore.gameObject.SetActive(true);
-        }
-        else
-        {
-            failResult.gameObject.SetActive(true);
-            failScore.text = currentScore.ToString();
-            failScore.gameObject.SetActive(true);
-        }
+        Invoke("ShowResult", 0.5f);
+
+       
     }
 
-    private void Start()
+    private void ResultShow()
     {
         bestScore = PlayerPrefs.GetInt(BestScoreKey, 0);
         uiManager.UpdateScore(0);
@@ -87,5 +88,21 @@ public class GameManager : MonoBehaviour
         Debug.Log("best Score : " + bestScore);
     }
 
+
+    public void ShowResult()
+    {
+        if (currentScore >= 50)
+        {
+            successResult.gameObject.SetActive(true);
+            successScore.text = currentScore.ToString();
+            successScore.gameObject.SetActive(true);
+        }
+        else
+        {
+            failResult.gameObject.SetActive(true);
+            failScore.text = currentScore.ToString();
+            failScore.gameObject.SetActive(true);
+        }
+    }
 
 }    

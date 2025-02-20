@@ -94,6 +94,8 @@ public class UIManager : MonoBehaviour
 
         gameoverText.gameObject.SetActive(false);
         introText.gameObject.SetActive(true);
+
+        GameManager.Instance.UIManager = this;
     }
 
     public void SetGameOverText(int currentScore)
