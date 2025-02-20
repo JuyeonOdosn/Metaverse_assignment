@@ -2,9 +2,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.XR;
 
+
+public enum UIState
+{
+    Start,
+    Game,
+    GameOver
+}
 public class UIManager : MonoBehaviour
 {
     public TextMeshProUGUI scoreText;
@@ -12,6 +21,63 @@ public class UIManager : MonoBehaviour
     public GameObject IntroPanel;
     public TextMeshProUGUI introText;
     public Button startButton;
+
+   
+
+    static UIManager instance;
+    public static UIManager Instance
+    {
+        get { return instance; }
+    }
+
+    UIState currentState = UIState.Start;
+
+    public UIState CurrentState
+    {
+        get { return currentState; }
+    }
+
+    StartUI startUI = null;
+    GameUI gameUI = null;
+    GameOverUI gameOverUI = null;
+
+    Player player = null;
+
+    private void Awake()
+    {
+        instance = this;
+
+        player = FindObjectOfType<Player>();
+
+        startUI = GetComponentInChildren<StartUI>(true);
+        startUI?.Init(this);
+
+        gameUI = GetComponentInChildren<GameUI>(true);
+        gameUI?.Init(this);
+
+        gameOverUI = GetComponentInChildren<GameOverUI>(true);
+        gameOverUI?.Init(this);
+
+        ChangeState(UIState.Start);
+
+    }
+
+    public void ChangeState(UIState state)
+    {
+        currentState = state;
+        startUI?.SetActive(currentState);
+        gameUI?.SetActive(currentState);
+        gameOverUI?.SetActive(currentState);
+
+        if (currentState == UIState.Start)
+        {
+            Time.timeScale = 0; 
+        }
+        else if (currentState != UIState.Start)
+        {
+            Time.timeScale = 1; 
+        }
+    }
 
     public void Start()
     {
@@ -39,4 +105,11 @@ public class UIManager : MonoBehaviour
     {
         scoreText.text = score.ToString();
     }
+
+    public void OnClickStart()
+    {
+        Time.timeScale = 1;
+        ChangeState(UIState.Game);
+    }
+
 }

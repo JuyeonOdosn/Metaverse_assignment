@@ -36,6 +36,9 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        if (UIManager.Instance != null && UIManager.Instance.CurrentState == UIState.Start)
+            return;
+
         if (isDead)
         {
             if (deathCooldown <= 0)
@@ -63,6 +66,9 @@ public class Player : MonoBehaviour
 
     public void FixedUpdate()
     {
+        if (isDead || UIManager.Instance != null && UIManager.Instance.CurrentState != UIState.Game)
+            return;
+
         if (isDead)
             return;
 

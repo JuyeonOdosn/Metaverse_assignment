@@ -16,6 +16,14 @@ public class GameManager : MonoBehaviour
 
     private int currentScore = 0;
 
+    public int Score { get { return currentScore; } }
+
+    private int bestScore = 0;
+
+    public int BestScore { get { return bestScore; } }
+
+    private const string BestScoreKey = "BestScore";
+
     UIManager uiManager;
     public UIManager UIManager { get { return uiManager; } }
 
@@ -34,10 +42,13 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         uiManager.UpdateScore(0);
+
+        bestScore = PlayerPrefs.GetInt(BestScoreKey, 0);
     }
 
     public void GameOver()
     {
+        uiManager.ChangeState(UIState.GameOver);
         uiManager.SetGameOverText();
     }
 
@@ -46,8 +57,15 @@ public class GameManager : MonoBehaviour
         currentScore += score;
         Debug.Log("Score: " + currentScore);
         uiManager.UpdateScore(currentScore);
+
+        if (currentScore > bestScore)
+        {
+            bestScore = currentScore;
+            PlayerPrefs.SetInt(BestScoreKey, bestScore);
+        }
+
+        Debug.Log("best Score : " + bestScore);
     }
 
-    
 
-}
+}    
