@@ -41,8 +41,12 @@ public class Obstacle : MonoBehaviour //장애물에 관한 클래스
     private void OnTriggerExit2D(Collider2D collision) // 플레이어가 장애물을 통과하면 점수를 얻도록 하는 함수
     {
         Player player = collision.GetComponent<Player>();
+
         if (player != null)
+        { 
+            if(!player.isDead)
             gameManager.AddScore(1);
+        }
     }
 
 }
