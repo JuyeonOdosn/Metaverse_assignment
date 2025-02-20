@@ -69,8 +69,6 @@ public class Player : MonoBehaviour
         if (isDead || UIManager.Instance != null && UIManager.Instance.CurrentState != UIState.Game) //앞선 업데이트 함수와 마찬가지 StartUI 종료 후에 진행되도록. Fixed Update라서 여기서도 안 하면 소용이 없다.
             return;
 
-        if (isDead)
-            return;
 
         Vector3 velocity = _rigidbody.velocity; //속도
         velocity.x = forwardSpeed;
@@ -84,8 +82,7 @@ public class Player : MonoBehaviour
         _rigidbody.velocity = velocity;
 
         float angle = Mathf.Clamp((_rigidbody.velocity.y * 10f), -90, 90); //플레이어의 방향 전환 각도
-        float lerpAngle = Mathf.Lerp(transform.rotation.eulerAngles.z, angle, Time.fixedDeltaTime * 5f);
-        transform.rotation = Quaternion.Euler(0, 0, lerpAngle);
+        transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
     public void OnCollisionEnter2D(Collision2D collision) //플레이어가 부딪쳤을 때 함수
