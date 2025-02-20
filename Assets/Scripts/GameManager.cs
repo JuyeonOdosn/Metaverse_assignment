@@ -24,6 +24,10 @@ public class GameManager : MonoBehaviour
 
     private const string BestScoreKey = "BestScore";
 
+
+    
+
+
     UIManager uiManager;
     public UIManager UIManager { get { return uiManager; } }
 
@@ -49,7 +53,7 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         uiManager.ChangeState(UIState.GameOver);
-        uiManager.SetGameOverText();
+        uiManager.SetGameOverText(currentScore);
     }
 
     public void AddScore(int score)

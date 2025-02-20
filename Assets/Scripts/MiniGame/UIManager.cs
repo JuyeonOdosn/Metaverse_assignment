@@ -18,6 +18,8 @@ public class UIManager : MonoBehaviour
 {
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI gameoverText;
+    public TextMeshProUGUI gameScoreText;
+    public TextMeshProUGUI bestScoreText;
     public GameObject IntroPanel;
     public TextMeshProUGUI introText;
     public Button startButton;
@@ -96,9 +98,13 @@ public class UIManager : MonoBehaviour
         introText.gameObject.SetActive(true);
     }
 
-    public void SetGameOverText()
+    public void SetGameOverText(int currentScore)
     {
         gameoverText.gameObject.SetActive(true);
+        gameScoreText.text = currentScore.ToString();
+        gameScoreText.gameObject.SetActive(true);
+        bestScoreText.text = GameManager.Instance.BestScore.ToString();
+        bestScoreText.gameObject.SetActive(true);
     }
 
     public void UpdateScore(int score)
