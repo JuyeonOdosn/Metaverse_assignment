@@ -69,7 +69,7 @@ public class UIManager : MonoBehaviour //게임 설명, 최고 점수, 현재 점수 등을 표
         gameUI?.SetActive(currentState);
         gameOverUI?.SetActive(currentState);
 
-        if (currentState == UIState.Start) //UIState만 시작할 때 게임이 진행되면 안 되니까 0으로 만들어 놓았다.
+        if (currentState == UIState.Start) //startUI만 시작할 때 게임이 진행되면 안 되니까 0으로 만들어 놓았다.
         {
             Time.timeScale = 0; 
         }
